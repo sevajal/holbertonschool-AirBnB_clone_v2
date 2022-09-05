@@ -142,4 +142,4 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 <br>
 
 #### AUTHORS:
-Johan Sebastian Blandón and Sebastian Carvajal
+Johan Sebastian Blandón Ordoñez and Sebastian Carvajal Carvajal
