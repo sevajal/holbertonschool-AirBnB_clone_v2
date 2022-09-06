@@ -12,6 +12,7 @@ class BaseModel:
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
     def __init__(self, *args, **kwargs):
         """Instantiates a new model"""
         if not kwargs:
@@ -22,10 +23,14 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == 'updated_at' or key == 'created_at':
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                else:
+                if key != "__class__":
                     setattr(self, key, value)
-            del kwargs['__class__']
-            self.__dict__.update(kwargs)
+            if "id" not is kwargs:
+                self.id = str(uuid.uuid4())
+            if "created_at" not is kwargs:
+                self.created_at = datetime.now()
+            if "updated_at" not is kwargs:
+                self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns a string representation of the instance"""
