@@ -23,6 +23,7 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
+        amenity_ids = []
         """reviews = relationship("Review", backref="place", cascade="delete")"""
         reviews = relationship("Review", backref=backref("place", cascade="all, delete-orphan"))
 
