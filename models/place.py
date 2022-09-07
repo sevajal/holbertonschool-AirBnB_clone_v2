@@ -23,7 +23,7 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
-        reviews = relationship("Review", backref="place", cascade="all, delete-orphan")
+        reviews = relationship("Review", backref="place")
 
     else:
         city_id = ""
