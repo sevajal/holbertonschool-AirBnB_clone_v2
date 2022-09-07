@@ -25,7 +25,7 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
         longitude = Column(Float, nullable=True)
         amenity_ids = []
         """reviews = relationship("Review", backref="place", cascade="delete")"""
-        reviews = relationship("Review", backref=backref("place", cascade="all, delete-orphan"))
+        """reviews = relationship("Review", backref=backref("place", cascade="all, delete-orphan"))"""
 
     else:
         city_id = ""
@@ -39,12 +39,15 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
-
+        """
         @property
         def reviews(self):
+        """
             """returns the list of City instances with state_id equals to the current State.id"""
+        """   
             reviews = []
             for review in models.storage.all(Review).values():
                 if review.place_id == self.id:
                     reviews.append(review)
             return reviews
+        """
