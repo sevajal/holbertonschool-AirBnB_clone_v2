@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
+import modules
 from models.base_model import BaseModel, Base
-from models.city import City
+from models.reviews import Review
 from sqlalchemy import Column, Float, Integer, String, ForeignKey
 from os import getenv
 
@@ -34,3 +35,12 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+        @property
+        def reviews(self):
+            """returns the list of City instances with state_id equals to the current State.id"""
+            reviews = []
+            for review in models.storage.all(Review).values():
+                if review.place_id == self.id:
+                    reviews.append(review)
+            return reviews
