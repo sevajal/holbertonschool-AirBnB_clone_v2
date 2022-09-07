@@ -40,11 +40,10 @@ class Place(BaseModel, Base if (TYPE_STORAGE == "db") else object):
 
         @property
         def reviews(self):
-            """Return a list with the citites"""
-            review_dict = models.storage.all(Review)
+            """Return a list with the reviews of a place"""
             review_list = []
-            for key, value in review_dict.items():
-                if value.place_id == self.id:
-                    review_list.append(value)
+            for review in models.storage.all(Review).values():
+                if review.place_id == self.id:
+                    review_list.append(review)
             return review_list
         
