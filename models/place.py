@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
-import modules
-from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
-from models.reviews import Review
 from sqlalchemy import Column, Float, Integer, String, ForeignKey
 from os import getenv
 
