@@ -6,7 +6,7 @@ from os import getenv
 
 TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
-class City(BaseModel, Base):
+class City(BaseModel, Base if (TYPE_STORAGE == "db") else object):
     """ The city class, contains state ID and name """
     if TYPE_STORAGE == "db":
         __tablename__ = "cities"

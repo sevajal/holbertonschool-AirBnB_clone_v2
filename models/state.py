@@ -9,7 +9,7 @@ from os import getenv
 
 TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
-class State(BaseModel, Base):
+class State(BaseModel, Base if (TYPE_STORAGE == "db") else object):
     """ State class """
     if TYPE_STORAGE == "db":
         __tablename__ = "states"
