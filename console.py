@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
                 value = int(value)
             dict_kwargs[key] = value
         new_instance = HBNBCommand.classes[array_args[0]]()
-        """storage.save()"""
+        storage.new(new_instance)
         for key, value in dict_kwargs.items():
             new_instance.__dict__[key] = value
         print(new_instance.id)
@@ -227,11 +227,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
-                if k.split('.')[0] == args:
-                    print_list.append(str(v))
+            for k, v in storage.all(HBNBCommand.classes[args]).items():
+                del v.__dict__['_sa_instance_state']
+                print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all():
                 print_list.append(str(v))
 
         print(print_list)
