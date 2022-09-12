@@ -12,5 +12,8 @@ env.key = '~/.ssh/school'
 
 def deploy():
     '''Creates and deploy an archive to the web servers'''
-    archive_path = do_pack()
+    try:
+        archive_path = do_pack()
+    except Exception as error:
+        return (False)
     return (do_deploy(archive_path))
