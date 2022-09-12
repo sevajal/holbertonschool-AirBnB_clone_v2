@@ -3,6 +3,7 @@
 using the function deploy.'''
 from fabric.api import env, local, put, run
 import os
+import time
 
 env.hosts = ['web-01.sevajal.tech', 'web-02.sevajal.tech']
 env.user = 'ubuntu'
