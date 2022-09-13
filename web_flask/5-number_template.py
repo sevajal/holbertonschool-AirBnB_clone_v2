@@ -3,7 +3,6 @@
 
 from flask import Flask
 from flask import render_template
-from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -24,20 +23,21 @@ def hbnb():
 def print_c_text(text):
     '''/c/<text> route'''
     text = text.replace("_", " ")
-    return f'C {escape(text)}'
+    return 'C {}'.format(text)
 
 
-@app.route('/python', strict_slashes=False)
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def print_python_text(text='is cool'):
     '''/python/<text> route'''
-    return f'Python {escape(text)}'
+    text = text.replace("_", " ")
+    return 'Python {}'.format(text)
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def print_number(n):
     '''/number/<n> route'''
-    return f'{escape(n)} is a number'
+    return '{} is a number'.format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
