@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''Script that starts a Flask web application'''
 
-from flask import Flask
 from markupsafe import escape
+from flask import Flask
+
 
 app = Flask(__name__)
 
@@ -27,7 +28,7 @@ def print_c_text(text):
 
 
 @app.route('/python', strict_slashes=False)
-@app.route('/python/<string:text>', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def print_python_text(text='is cool'):
     '''/python/<text> route'''
     text = text.replace("_", " ")
