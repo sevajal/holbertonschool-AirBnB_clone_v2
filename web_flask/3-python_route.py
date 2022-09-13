@@ -31,7 +31,7 @@ def print_c_text(text):
 def print_python_text(text='is cool'):
     '''/python/<text> route'''
     text = text.replace("_", " ")
-    return f'Python {escape(text)}'
+    return 'Python {}'.format(text)
 
 
 if __name__ == '__main__':
