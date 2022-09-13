@@ -16,6 +16,7 @@ PASS = getenv('HBNB_MYSQL_PWD')
 HOST = getenv('HBNB_MYSQL_HOST')
 DB = getenv('HBNB_MYSQL_DB')
 
+
 class DBStorage:
     """Class DBStorage"""
     __engine = None
@@ -23,7 +24,8 @@ class DBStorage:
 
     def __init__(self):
         """Instantiates a new database"""
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(USER, PASS, HOST, DB), pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
+            USER, PASS, HOST, DB), pool_pre_ping=True)
 
         if getenv('HBNB_ENV') == "test":
             Base.metadata.drop_all(self.__engine)
@@ -37,8 +39,8 @@ class DBStorage:
         else:
             list_class = [State, Place, User, City, Review, Amenity]
             for every_class in list_class:
-                for obj in self.__session.query(every_class).all():
-                    dict_return[obj.to_dict()['__class__'] + '.' + obj.id] = obj
+                for ob in self.__session.query(every_class).all():
+                    dict_return[ob.to_dict()['__class__'] + '.' + ob.id] = ob
         return dict_return
 
     def new(self, obj):
