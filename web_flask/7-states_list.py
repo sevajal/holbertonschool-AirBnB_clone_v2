@@ -3,9 +3,8 @@
 
 from flask import Flask
 from flask import render_template
-from flask import request
-from markupsafe import escape
 from models import storage
+from models.state import State
 
 
 app = Flask(__name__)
