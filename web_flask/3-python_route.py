@@ -26,12 +26,12 @@ def print_c_text(text):
     return f'C {escape(text)}'
 
 
-@app.route('/python/', strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<string:text>', strict_slashes=False)
 def print_python_text(text='is cool'):
     '''/python/<text> route'''
     text = text.replace("_", " ")
-    return 'Python {}'.format(text)
+    return f'Python {escape(text)}'
 
 
 if __name__ == '__main__':
