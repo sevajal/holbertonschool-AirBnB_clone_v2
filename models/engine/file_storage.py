@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
+from platform import release
 
 
 class FileStorage:
@@ -63,3 +64,7 @@ class FileStorage:
         if obj:
             obj_name = obj.to_dict()['__class__'] + '.' + obj.id
             FileStorage.__objects.pop(obj_name)
+
+    def close(self):
+        """Call reload to deserializing the JSON file to objects"""
+        self.reload()
