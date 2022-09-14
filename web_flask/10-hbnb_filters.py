@@ -21,7 +21,7 @@ def display_filters():
     '''Display a HTML page with filters'''
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
-    return render_template('6-index.html', states=states, amenities=amenities)
+    return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
 
 
 if __name__ == '__main__':
