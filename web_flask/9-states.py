@@ -25,16 +25,14 @@ def display_states():
 
 
 @app.route("/states/<id>", strict_slashes=False)
-def display_cities_of_a_state():
+def display_cities_of_a_state(id):
     '''Display a HTML page with the states'''
     states = storage.all(State).values()
     state_name = ""
-    state_info = []
     for state in states:
         if state.id == id:
             state_name = state.name
-            state_info.append(state)
-    return render_template('9-states.html', id=id, state_info=state_info, state_name=state_name)
+    return render_template('9-states.html', id=id, states=states, state_name=state_name)
 
 
 if __name__ == '__main__':

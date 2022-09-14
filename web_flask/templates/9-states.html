@@ -10,9 +10,9 @@
         <h1>State: {{ state_name }}</h1>
         <h3>Cities:</h3>
         <ul>
-        {% for city in state_info.cities|sort(attribute=city.name) %}
-            <li>{{ city.id|e }}: <B>{{ city.name|e }}</B></li>  
-        {% endfor %}
+        {% for state in states %}{% if state.id == id %}{% for city in state.cities|sort(attribute="name") %}
+            <li>{{ city.id }}: <B>{{ city.name }}</B></li>  
+        {% endfor %}{% endif %}{% endfor %}
         </ul>
         {% endif %}
     </body>
