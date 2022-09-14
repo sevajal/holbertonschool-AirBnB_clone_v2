@@ -32,7 +32,8 @@ def display_cities_of_a_state(id):
     for state in states:
         if state.id == id:
             state_name = state.name
-    return render_template('9-states.html', id=id, states=states, state_name=state_name)
+    return render_template(
+        '9-states.html', id=id, states=states, state_name=state_name)
 
 
 if __name__ == '__main__':
