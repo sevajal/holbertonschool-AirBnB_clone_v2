@@ -65,9 +65,9 @@
 							<p>{{ place.number_bathrooms }} Bathroom</p>
 						</div>
 					</div>
-					<div class="user"><b>Owner</b>: User.{{ place.user_id }}['first_name']</div>
+					<div class="user"><b>Owner</b>: {% for user in users %}{% if place.user_id == user.id %}{{ user.first_name }} {{ user.last_name }}{% endif %}{% endfor %}</div>
 					<div class="description">
-                        {{ place.description }}
+                        {% autoescape flase %}{{ place.description }}{% endautoescape %}
                     </div>
 				</article>
 				{% endfor %}

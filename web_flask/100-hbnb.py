@@ -26,7 +26,7 @@ def display_airbnb():
     places = storage.all(Place).values()
     users = storage.all(User).values()
     return render_template(
-        '10-hbnb_filters.html', states=states, amenities=amenities, places=places, users=users)
+        '100-hbnb.html', states=states, amenities=amenities, places=places, users=users)
 
 
 if __name__ == '__main__':

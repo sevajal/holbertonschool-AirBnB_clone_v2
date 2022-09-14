@@ -26,20 +26,28 @@ article {
 
 .headline {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
+	text-align: left;
+	flex-direction: column;
+	align-content: center;
 	position: relative;
-
+	justify-content: center;
 	height: 80px;	
 	width: 100%;
+	padding-bottom: 1%;
+	margin-right: 62px;
+	gap: 10px 3px;
+	margin-top: 8px;
 }
 
 .price_by_night {
-	display: flex;
+	/*display: flex;
 	justify-content: center;
-	align-self: flex-end;
-
+	align-self: flex-end;*/
+	margin-left: 330px;
 	position: absolute;
-	right: 0;
+	margin-right: 0px;
+	margin-left: 390px;
 
 	line-height: 60px;
 	color: #FF5A5F;
@@ -96,6 +104,7 @@ article h2 {
 	font-size: 30px;
 	margin: 10px auto;
 	padding: 0px;
+	padding-right: 5px;
 }
 
 .guest_icon {
